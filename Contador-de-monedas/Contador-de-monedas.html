@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contador</title>
+        <link href="Styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <!-- FALTA
+            - Sumar la cantidad de dinero
+            - exportar a excel
+            - agregar tablas por curso
+            - teclas para borrar
+            - word wrap
+            - styling
+        -->
+        <h1>Contador de Monedas</h1>
+        <h3>Curso: </h3>
+        <select id="selector-grado">
+            <option value="playgroup">
+                Playgroup
+            </option>
+            <option value="prekinder">
+                PreKinder
+            </option>
+            <option value="kinder">
+                Kinder
+            </option>
+            <option value="primero-básico">
+                1°
+            </option>
+            <option value="segundo-básico">
+                2°
+            </option>
+            <option value="tercero-básico">
+                3°
+            </option>
+            <option value="cuarto-básico">
+                4°
+            </option>
+            <option value="quinto-básico">
+                5°
+            </option>
+            <option value="sexto-básico">
+                6°
+            </option>
+            <option value="séptimo-básico">
+                7°
+            </option>
+            <option value="octavo-básico">
+                8°
+            </option>
+            <option value="primero-medio">
+                I
+            </option>
+            <option value="segundo-medio">
+                II
+            </option>
+            <option value="tercero-medio">
+                III
+            </option>
+            <option value="cuarto-medio">
+                IV
+            </option>
+        </select>
+
+        <select id="selector-paralelo">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <div class="count-div">
+            <h3>Monedas</h3>
+        <table id="tabla-monedas">
+            <tr>
+                <th>Diez (q)</th>  
+                <th>Cincuenta (w)</th>                          
+                <th>Cien (e)</th>                          
+                <th>Quinientos (r)</th>                          
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" id="moneda-10" placeholder="presiona q">
+                </td>
+                <td>
+                    <input type="number" id="moneda-50" placeholder="presiona w">
+                </td>
+                <td> 
+                    <input type="number" id="moneda-100" placeholder="presiona e">
+                </td>
+                <td>
+                    <input type="number" id="moneda-500" placeholder="presiona r">
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <h3>Billetes</h3>
+        <table id="tabla-billetes">
+            <tr>
+                <th>Mil (a)</th>  
+                <th>Dos Mil (s)</th>                          
+                <th>Cinco Mil (d)</th>                          
+                <th>Diez Mil (f)</th>                          
+                <th>Veinte Mil (g)</th>                          
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" id="billete-mil" placeholder="presiona a">
+                </td>
+                <td>
+                    <input type="number" id="billete-dos-mil" placeholder="presiona s">
+                </td>
+                <td> 
+                    <input type="number" id="billete-cinco-mil" placeholder="presiona d">
+                </td>
+                <td>
+                    <input type="number" id="billete-diez-mil" placeholder="presiona f">
+                </td>
+                <td>
+                    <input type="number" id="billete-veinte-mil" placeholder="presiona g">
+                </td>
+            </tr>
+        </table>
+        </div>
+        <hr>
+        <button onclick="crearTablaCursos(document.getElementById('tabla-cursos'));">crear tabla</button>
+        <button onclick="exportTableToExcel('tablaExcel' , 'Recaudación_Teleton')">Exportar Tabla</button>
+        <button onclick="eraseValues()">Vaciar contadores</button>
+        <div id="export-table-div">
+
+        </div>
+        
+        <script src="Script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Calculation Practice</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+    <h1>Mental Calculation Practice</h1>
+
+    <div id="timerDiv">
+        <p id="timerP"></p>
+    </div>
+
+    <button onclick="displaySettings()" >Settings</button>
+    <div id="menuDiv">
+        <button onclick="closeSettings()">x</button><br>
+        <label for="selectMode">Select Mode</label>
+        <select name="selectMode" id="selectMode" onchange="selectMode(this.value)">
+            <option value="normal">Normal</option>
+            <option value="inputAnswer">Input answer</option>
+        </select> <br>
+        <label for="selectColor">Select Color</label>
+        <select name="selectColor" id="selectColor" onchange="changeBackgroundColor(this.value)">
+            <option value="white">White</option>
+            <option value="#FFC300">Orange Yellow</option>
+            <option value="cadetblue">Cadet Blue</option>
+            <option value="#48C9B0">Turquoise</option>
+        </select><br>
+    </div>
+
+    <p><strong>Insert the lenght of the digits for both numbers.</strong></p>
+    
+    <input type="number" id="numberOfDigitsOne" placeholder="Number of digits" value="1" oninput="answerAndProblem()"> 
+    <select name="operationOptions" id="operationOptions" autofocus>
+        <option value="addition">Addition</option>
+        <option value="subtraction">Subtraction</option>
+        <option value="multiplication">Multiplication</option>
+        <option value="division">Division</option>
+    </select>
+    <input type="number" id="numberOfDigitsTwo" placeholder="Number of digits" value="1" oninput="answerAndProblem()">   
+    <button onclick="answerAndProblem(); hideAnswer(); resetTime(); startTimer()">Generate Problem</button> 
+    <hr>
+
+    <div id="problemBox">
+        <p id="problemP"></p>
+        <button onclick="showAnswer(); stopTimer()">Answer</button>
+        <p id="answerP"></p>     
+    </div>
+
+    <input type="number" id="userAnswer" oninput="checkAnswer()">
+    <hr>
+    <br>
+    <h3>Times</h3>
+    <table id="recordTbl">
+        <tbody id="recordTblBody">
+            <tr>
+                <th>Date</th>
+                <th>Operation</th>
+                <th>1st Digit Size</th>
+                <th>2nd Digit Size</th>
+                <th>Time</th>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="exportToExcel('recordTbl', 'excel_table_test')">Export Table</button>
+   
+    <script src="Main-Script.js"></script>
+</body>
+</html>

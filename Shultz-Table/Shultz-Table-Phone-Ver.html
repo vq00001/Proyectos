@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shultz Table</title>
+    <style>
+        h1{
+    color: white;    
+}
+table{
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse; 
+    font-size: 20px;    
+    padding: 5%;   
+    margin: auto;
+        
+}
+td{
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+#menuDiv{
+    z-index: 3;
+    position: absolute;
+    background-color: rgb(244, 253, 253);
+    border: 1px solid black;
+    border-radius: 3px;
+    display: none; 
+    width: 175px;
+    height: auto;
+    text-align: left;
+    padding: 8px;
+}
+#menuDiv button{
+    height: 20px;
+    width: 20px;
+    margin-left: 90%;
+    margin-left: 10%;
+    text-align: center;
+}
+#menuDiv input{
+    width: 70%;
+}
+#shultzTable{
+    color: black;
+    min-height: 300px;
+    min-width: 300px;
+}
+    </style>
+</head>
+<body style="background-color: #465362;">
+    <h1>Shultz Table Generator</h1>
+    <button onclick="showMenu()">Settings</button>
+    <input type="button" onclick="generateTable()" value="Generate_table">
+    <select id="selectCellNumber" onchange="generateTable()">
+        <option value="25">5×5</option>
+        <option value="36">6×6</option>
+        <option value="49">7×7</option>
+    </select>
+    <br><hr>
+    <div class="menuDiv" id="menuDiv">
+        <button onclick="hideMenu()">x</button><br>
+
+        <label for="tblSizeInput">Table's Size</label>
+        <input type="number" name="tblSizeInput" id="tblSizeInput" oninput="changeTableSize(this.value)" value="210"><br> 
+        
+        <label for="fontSize">Font Size</label>
+        <input type="number" name="fontSize" id="fontSize" oninput="changeFontSize(this.value)" value="25"><br>
+        
+        <label for="shultzTblColor">Table's Background Color</label>
+        <input type="color" name="shultzTblColor" id="shultzTblColor" oninput="changeTablecolor(this.value)" value="#ffffff"><br> 
+
+        <label for="backGcolor">Background Color</label>
+        <input type="color" name="backGcolor" oninput="changeBackGcolor(this.value)" value="#ffffff"><br>
+       
+    </div>
+    <div id="tblDiv" style="margin-left:20%; margin-right: 20%;"></div>
+    <script>
+        function generateTable(){
+    let sqNum = document.getElementById("selectCellNumber").value;
+    if(document.getElementById("shultzTable") !== null){
+        document.getElementById("shultzTable").remove()
+    }
+
+    let table = document.createElement("table");
+    let tblBody = document.createElement("tbody");
+
+
+    let cellNumber;
+    let positionArrNum = [];
+    let sortedArr;
+
+    function pickArrNum(){
+        let numList = [];
+        for(i = 1; i < sqNum + 1; i++){
+            numList.push(i);
+        };
+       
+        let arrPosition = Math.floor(Math.random()*sqNum);
+        cellNumber = numList[arrPosition];
+        // console.log("arrPosition: " + arrPosition);    
+
+        let criteria;
+        
+        if(positionArrNum.filter(num => num === 0).length > 0 && arrPosition === 0){
+            criteria = true;  
+        } else if(positionArrNum.find(num => num === arrPosition)){
+            criteria = true;
+        } else {
+            criteria = false;
+        };
+        
+        
+
+        // console.log("Criteria before: " + criteria);
+
+        for(;criteria;){
+            arrPosition = Math.floor(Math.random()* sqNum);
+            if(positionArrNum.filter(num => num === 0).length > 0 && arrPosition === 0){
+                criteria = true;  
+            } else if(positionArrNum.find(num => num === arrPosition)){
+                criteria = true;
+            } else {
+                criteria = false;
+            };            
+        };
+        cellNumber = numList[arrPosition];
+        // console.log("cellNumber: " + cellNumber);
+        // console.log("Criteria after: " + criteria);
+        positionArrNum.push(arrPosition);
+        // console.log("positionArrNum: " + positionArrNum)
+        // console.log("--------------------------")
+
+        sortedArr = positionArrNum.sort(function(a, b) {
+            return a - b;
+          });
+        
+    }
+    for(a = 0; a < Math.sqrt(sqNum); a++){
+       let row = document.createElement("tr");
+
+       for(b = 0; b < Math.sqrt(sqNum); b++){
+           let cell = document.createElement("td");
+           pickArrNum();
+           
+           let cellText = document.createTextNode(cellNumber);
+           cell.appendChild(cellText);
+           row.appendChild(cell);
+           cellText = "";
+       }
+
+       tblBody.appendChild(row);
+    }
+    table.appendChild(tblBody);
+    document.getElementById("tblDiv").appendChild(table);
+    // console.log(sortedArr);
+    table.setAttribute("id", "shultzTable");
+    
+    changeFontSize(document.getElementById("fontSize").value);
+    changeTablecolor(document.getElementById("shultzTblColor").value);
+    changeTableSize(document.getElementById("tblSizeInput").value);
+}
+function showMenu(){
+    document.getElementById("menuDiv").style.display = "block"; 
+};
+function hideMenu(){
+    document.getElementById("menuDiv").style.display = "none"; 
+};
+function changeFontSize(size){
+    document.getElementById("shultzTable").style.fontSize = size + "px"; 
+};
+function changeBackGcolor(color){
+    document.body.style.backgroundColor = color; 
+};
+function changeTablecolor(color){
+    document.getElementById("shultzTable").style.backgroundColor = color;
+};
+
+function changeTableSize(size){
+    document.getElementById("shultzTable").style.height = size + "px";
+    document.getElementById("shultzTable").style.width = size + "px";
+};
+    </script>
+</body>
+</html> 

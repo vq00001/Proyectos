@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(255, 247, 212);
+    text-align: justify;
+    word-wrap: normal;
+}
+#export-table-div{
+    text-align: center;
+    font-size: medium;
+    padding: 8px;
+    width: 80%;
+}
+
+#export-table-div td{
+    border: 1px solid black;
+    font-size: medium;
+    padding: 8px;
+}
+

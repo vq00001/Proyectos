@@ -1,0 +1,44 @@
+h1{
+    color: white;    
+}
+table{
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse; 
+    font-size: 20px;    
+    padding: 5%;   
+    margin: auto;
+        
+}
+td{
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+#menuDiv{
+    z-index: 3;
+    position: absolute;
+    background-color: rgb(244, 253, 253);
+    border: 1px solid black;
+    border-radius: 3px;
+    display: none; 
+    width: 175px;
+    height: auto;
+    text-align: left;
+    padding: 8px;
+}
+#menuDiv button{
+    height: 20px;
+    width: 20px;
+    margin-left: 90%;
+    margin-left: 10%;
+    text-align: center;
+}
+#menuDiv input{
+    width: 70%;
+}
+#shultzTable{
+    color: black;
+    min-height: 300px;
+    min-width: 300px;
+}

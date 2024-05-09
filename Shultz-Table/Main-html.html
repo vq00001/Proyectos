@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shultz Table</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body style="background-color: #465362;">
+    <h1>Shultz Table Generator</h1>
+    <button onclick="showMenu()">Settings</button>
+    <input type="button" onclick="generateTable()" value="Generate_table">
+    <select id="selectCellNumber" onchange="generateTable()">
+        <option value="25">5×5</option>
+        <option value="36">6×6</option>
+        <option value="49">7×7</option>
+    </select>
+    <br><hr>
+    <div class="menuDiv" id="menuDiv">
+        <button onclick="hideMenu()">x</button><br>
+
+        <label for="tblSizeInput">Table's Size</label>
+        <input type="number" name="tblSizeInput" id="tblSizeInput" oninput="changeTableSize(this.value)" value="210"><br> 
+        
+        <label for="fontSize">Font Size</label>
+        <input type="number" name="fontSize" id="fontSize" oninput="changeFontSize(this.value)" value="25"><br>
+        
+        <label for="shultzTblColor">Table's Background Color</label>
+        <input type="color" name="shultzTblColor" id="shultzTblColor" oninput="changeTablecolor(this.value)" value="#ffffff"><br> 
+
+        <label for="backGcolor">Background Color</label>
+        <input type="color" name="backGcolor" oninput="changeBackGcolor(this.value)" value="#ffffff"><br>
+       
+    </div>
+    <div id="tblDiv" style="margin-left:20%; margin-right: 20%;"></div>
+    <script src="Main-Script.js"></script>
+</body>
+</html> 
